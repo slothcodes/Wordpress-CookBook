@@ -1,358 +1,221 @@
-# Custom WordPress Block Development Recipes
+# WordPress Custom Block Creation Cheat Sheet
 
-## Table of Contents
-1. [Setting Up Custom Gutenberg Blocks](#1-setting-up-custom-gutenberg-blocks)
-    1. [Plugin Structure](#a-plugin-structure)
-    2. [Folder and File Setup](#b-folder-and-file-setup)
-    3. [Initializing NPM and Git](#c-initializing-npm-and-git)
-    4. [Connecting to GitHub](#d-connecting-to-github)
-    5. [Enqueueing Styles and Scripts](#e-enqueueing-styles-and-scripts)
-    6. [Creating Dynamic Blocks](#f-creating-dynamic-blocks)
-    7. [Server-Side Rendering](#g-server-side-rendering)
-    8. [Setting Up React and Build Processes](#h-setting-up-react-and-build-processes)
-    9. [Build Process Setup](#build-process-setup)
+## Step 1: Setting Up Your Development Environment
 
-## 1. Setting Up Custom Gutenberg Blocks
+To create a custom WordPress block, you first need to set up a local development environment. This involves installing WordPress locally and ensuring you have the necessary tools.
 
-### A. Plugin Structure
-Organize your plugin with a main PHP file and a 'blocks' folder for block files.
+### 1.1. Install a Local Server Environment
+
+You can use tools like XAMPP, MAMP, or Local by Flywheel. For this example, we'll use XAMPP:
+
+- Download XAMPP from [https://www.apachefriends.org/index.html](https://www.apachefriends.org/index.html).
+- Install XAMPP and start Apache and MySQL services.
+
+### 1.2. Install WordPress Locally
+
+- Download WordPress from [https://wordpress.org/download/](https://wordpress.org/download/).
+- Extract the WordPress zip file into the `htdocs` directory of XAMPP.
+- Rename the extracted folder to a project name of your choice (e.g., `my-block-plugin`).
+- Create a new database for your WordPress site via the phpMyAdmin panel at `http://localhost/phpmyadmin`.
+- Start WordPress installation by navigating to `http://localhost/my-block-plugin`.
+- Follow the installation steps.
+
+### 1.3. Set Up Node.js and NPM
+
+You need Node.js and NPM to compile JavaScript and manage dependencies.
+
+- Download and install Node.js from [https://nodejs.org/](https://nodejs.org/).
+- Verify installation by running `node -v` and `npm -v` in your command line or terminal.
+
+### 1.4. Install a Code Editor
+
+Use a code editor like Visual Studio Code, Atom, or Sublime Text for coding. For instance, to use Visual Studio Code:
+
+- Download it from [https://code.visualstudio.com/](https://code.visualstudio.com/).
+- Install and open the editor.
+
+### 1.5. WordPress Environment Check
+
+Ensure you have the latest version of WordPress and that the Gutenberg plugin is installed and activated, as it offers the latest block editor features.
+
+- Check WordPress version in the admin dashboard and update if necessary.
+- Install the Gutenberg plugin from the WordPress plugin repository.
+
+
+## Step 2: Creating a Custom Plugin for Your Block
+
+Creating a custom plugin is essential for housing your custom block. This ensures your block is portable and independent of the theme.
+
+### 2.1. Create a New Plugin Directory
+
+First, create a directory for your plugin in the `wp-content/plugins` directory of your WordPress installation.
+
+- Navigate to `wp-content/plugins`.
+- Create a new directory named `my-custom-block`.
+
+### 2.2. Create the Main Plugin File
+
+Inside your new directory, create the main PHP file for the plugin. This file will contain plugin metadata and initialization code.
+
+- Create a file named `my-custom-block.php`.
+- Add the following content to the file:
 
 ```php
-// Structure of your plugin directory
-plugin-name/
-├── plugin-name.php       // Main plugin PHP file
-|-- index.js              // For Importing blocks and acting as main entry point
-└── blocks/               // Folder for Gutenberg blocks
-    ├── block-1/
-    │   ├── index.js      // JavaScript file for block functionality
-    │   ├── style.scss    // SCSS file for front-end styles
-    │   └── editor.scss   // SCSS file for editor styles
-    └── block-2/
-        ├── index.js
-        ├── style.scss
-        └── editor.scss
-```
-The main plugin file (plugin-name.php) is responsible for initializing your custom Gutenberg blocks and any other plugin functionality.
-### B. Folder and File Setup
-Set up individual directories for each block within the 'blocks' folder and include a main plugin file.
-```
-// Main plugin file: plugin-name.php
 <?php
 /**
- * Plugin Name: Your Plugin Name
- * Description: A description of your plugin.
+ * Plugin Name: My Custom Block
+ * Description: A custom block for Gutenberg.
  * Version: 1.0
  * Author: Your Name
  */
 
-// Your plugin's main code goes here
+// Prevent direct access to the file
+defined('ABSPATH') or die('No script kiddies please!');
 
-// Include enqueue functions and block registrations
-
-```
-
-### C. Initializing NPM and Git
-Initialize NPM and Git for dependency management and version control.
-```# Navigate to your plugin directory
-cd path/to/your-plugin
-
-# Initialize NPM to manage JavaScript dependencies
-npm init -y
-
-# Initialize Git for version control
-git init
-```
-### D. Connecting to GitHub
-Link your local repository with a GitHub repository for remote version control.
-```# Link to your GitHub repository
-git remote add origin https://github.com/your-username/your-repository.git
-
-# Stage all current files for commit
-git add .
-
-# Commit the files with a message
-git commit -m "Initial commit"
-
-# Push the commit to GitHub
-git push -u origin master
-```
-### E. Enqueueing Styles and Scripts
-In your main plugin file, enqueue the JavaScript and CSS files for your blocks.
-```
-<?php
-// Function to enqueue block assets
-function enqueue_block_assets() {
-    // Enqueue the block editor script
+/**
+ * Load block assets for both frontend + backend.
+ */
+function my_custom_block_assets() {
     wp_enqueue_script(
-        'example-block-editor-script', // Handle for the script
-        plugins_url( 'blocks/example-block/index.js', __FILE__ ), // Path to the block editor JS
-        array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Script dependencies
-        filemtime( plugin_dir_path( __FILE__ ) . 'blocks/example-block/index.js' ) // Version number
+        'my-custom-block-js', // Handle.
+        plugins_url('block.js', __FILE__), // block.js: The block's JS.
+        array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'), // Dependencies, should include 'wp-element'.
+        filemtime(plugin_dir_path(__FILE__) . 'block.js') // Version: File modification time.
     );
 
-    // Enqueue the block editor style
     wp_enqueue_style(
-        'example-block-editor-style', // Handle for the style
-        plugins_url( 'blocks/example-block/editor.css', __FILE__ ), // Path to the block editor CSS
-        array( 'wp-edit-blocks' ), // Style dependencies
-        filemtime( plugin_dir_path( __FILE__ ) . 'blocks/example-block/editor.css' ) // Version number
-    );
-
-    // Enqueue the front-end style
-    wp_enqueue_style(
-        'example-block-style', // Handle for the style
-        plugins_url( 'blocks/example-block/style.css', __FILE__ ), // Path to the block style CSS
-        array(), // No dependencies
-        filemtime( plugin_dir_path( __FILE__ ) . 'blocks/example-block/style.css' ) // Version number
+        'my-custom-block-editor-css', // Handle.
+        plugins_url('editor.css', __FILE__), // editor.css: Editor style.
+        array('wp-edit-blocks'), // Dependency to include the CSS after it.
+        filemtime(plugin_dir_path(__FILE__) . 'editor.css') // Version: File modification time.
     );
 }
-add_action( 'enqueue_block_assets', 'enqueue_block_assets' );
-?>
+
+// Hook: Frontend assets.
+add_action('enqueue_block_assets', 'my_custom_block_assets');
+
+// Hook: Editor assets.
+add_action('enqueue_block_editor_assets', 'my_custom_block_assets');
 ```
-### F. Creating Dynamic Blocks
-Dynamic blocks are rendered on the server. Create a PHP callback function for rendering and register it in index.js.
+- This code registers a function to enqueue your block's JavaScript and CSS files.
+- It uses wp_enqueue_script and wp_enqueue_style to load your assets.
+
+### 2.3. Create JavaScript and CSS Files
+Create the JavaScript and CSS files for your block. These files define the behavior and style of your block.
+
+- Create a file named block.js in your plugin directory.
+- Create a file named editor.css for editor-specific styles.
+
+### 2.4. Write Basic Block JavaScript
+Here's a basic structure for your block.js:
 ```
-<?php
-// Server-side render callback for the block
-function render_dynamic_block( $attributes ) {
-    // Render the block's HTML from the attributes
-    return '<div>' . esc_html( $attributes['content'] ) . '</div>';
-}
+const { registerBlockType } = wp.blocks; // Import registerBlockType from wp.blocks
 
-// Register the block
-register_block_type( 'your-plugin/example-block', array(
-    'render_callback' => 'render_dynamic_block',
-) );
-?>
-```
-In index.js, register the block with registerBlockType and specify the edit and save functions.
-```
-// Example block registration
-const { registerBlockType } = wp.blocks;
-
-registerBlockType( 'your-plugin/example-block', {
-    // Block configuration
-    edit: function( props ) {
-        // Editor view
-    },
-    save: function() {
-        // Return null as this is a dynamic block
-        return null;
-    }
-});
-```
-### G. Server-Side Rendering
-
-Server-side rendering for Gutenberg blocks involves rendering the block's dynamic content with PHP. This is particularly useful for blocks whose content depends on external data or needs to be dynamically updated.
-
-#### PHP Side: Registering the Block with a Render Callback
-
-In your plugin's main PHP file, register the block and specify a server-side rendering callback.
-
-```php
-<?php
-// Include WordPress core function library
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-// Function to register the block and its server-side render callback
-function register_my_custom_block() {
-    // Check if the function exists
-    if ( function_exists( 'register_block_type' ) ) {
-        // Register the block
-        register_block_type( 'your-plugin/your-custom-block', array(
-            // Specify the server-side rendering callback
-            'render_callback' => 'my_custom_block_render_callback',
-        ));
-    }
-}
-add_action( 'init', 'register_my_custom_block' ); // Hook into WordPress init action
-
-// The server-side rendering callback function
-function my_custom_block_render_callback( $attributes, $content ) {
-    // $attributes contains block attributes
-    // $content contains any nested blocks or default content
-
-    // Generate the block output
-    $block_content = '<div class="my-custom-block">' . esc_html( $attributes['message'] ) . '</div>';
-
-    // Return the rendered content
-    return $block_content;
-}
-```
-### JavaScript Side: Block Registration without Save Method
-In your block's JavaScript file (index.js), define the block without a save method since it's rendered via PHP.
-```
-// JavaScript for registering the block
-const { registerBlockType } = wp.blocks;
-
-registerBlockType( 'your-plugin/your-custom-block', {
-    // Block title, icon, and category
+registerBlockType('my-custom-block/my-block', {
     title: 'My Custom Block',
     icon: 'smiley',
     category: 'common',
+    edit() {
+        return <div>Hello, World!</div>;
+    },
+    save() {
+        return <div>Hello, World!</div>;
+    },
+});
+```
+- This JavaScript uses registerBlockType to define a new block.
+- The edit function defines the editor interface.
+- The save function defines the content saved to the database and displayed on the frontend.
+## Step 3: Registering a New Block in WordPress
 
-    // Define attributes used in your block
+After setting up your plugin, the next step is to register your custom block within WordPress. This involves editing your plugin's PHP and JavaScript files.
+
+### 3.1. Register Block Type in PHP
+
+You need to inform WordPress about your new block and its script dependencies.
+
+- Edit your `my-custom-block.php` file to include block registration.
+- Add the following PHP code:
+
+```php
+function my_custom_block_register_block() {
+    // automatically load dependencies and version
+    $asset_file = include(plugin_dir_path(__FILE__) . 'build/index.asset.php');
+
+    wp_register_script(
+        'my-custom-block-editor-script', // Handle.
+        plugins_url('build/index.js', __FILE__), // Block.build.js: We register the block here.
+        $asset_file['dependencies'], // Dependencies.
+        $asset_file['version'] // Version.
+    );
+
+    register_block_type('my-custom-block/my-block', array(
+        'editor_script' => 'my-custom-block-editor-script', // We registered this above.
+    ));
+}
+
+add_action('init', 'my_custom_block_register_block');
+```
+- This code uses register_block_type to register the block in WordPress.
+- It sets the editor script to the handle of the script you enqueued earlier.
+
+### 3.2. Edit JavaScript Block Registration
+Modify the block.js (or index.js if you have a build process) to register your block with additional settings.
+```
+const { registerBlockType } = wp.blocks; // Import registerBlockType from wp.blocks
+
+registerBlockType('my-custom-block/my-block', {
+    title: 'My Custom Block',
+    icon: 'smiley',
+    category: 'common',
     attributes: {
-        message: {
-            type: 'string',
-            default: 'Hello World',
-        },
+        // Define attributes here if needed.
     },
-
-    // Editor view configuration
-    edit: function( props ) {
-        // Function to update block attributes
-        const onChangeMessage = ( newMessage ) => {
-            props.setAttributes( { message: newMessage } );
-        };
-
-        // Editor view HTML
-        return (
-            <div className="my-custom-block">
-                <textarea 
-                    value={ props.attributes.message }
-                    onChange={ ( event ) => onChangeMessage( event.target.value ) }
-                />
-            </div>
-        );
+    edit: function(props) {
+        // Add editor code here.
+        return <div className={props.className}>Hello, World (Editor)!</div>;
     },
-
-    // Save function is not needed for server-side rendered blocks
-    save: () => null,
-});
-
-```
-### H. Setting Up React and Build Processes
-
-Integrating React for block development and establishing build processes are crucial for efficient development and performance optimization.
-
-#### React Setup
-
-1. **Install React and Babel Dependencies**
-
-   Ensure that your `package.json` includes React and Babel. Run the following command in your plugin directory:
-
-   ```bash
-   npm install --save react react-dom @babel/core @babel/preset-env @babel/preset-react babel-loader
-   ```
-### Configure Babel
-
-Create a .babelrc file in your plugin directory with the following configuration:
-```
-{
-  "presets": ["@babel/preset-env", "@babel/preset-react"]
-}
-```
-### Sample React Component for Block
-
-In your block's index.js, use React components for rendering the block's edit and save functions.
-```
-import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, RichText } from '@wordpress/block-editor';
-
-registerBlockType('your-plugin/your-custom-block', {
-  // Block configuration...
-
-  edit: ({ attributes, setAttributes }) => {
-    return (
-      <div {...useBlockProps()}>
-        <RichText
-          tagName="p"
-          value={attributes.content}
-          onChange={(content) => setAttributes({ content })}
-        />
-      </div>
-    );
-  },
-
-  save: ({ attributes }) => {
-    return (
-      <div {...useBlockProps.save()}>
-        <RichText.Content tagName="p" value={attributes.content} />
-      </div>
-    );
-  },
+    save: function() {
+        // Add save code here.
+        return <div>Hello, World (Frontend)!</div>;
+    },
 });
 ```
-## Build Process Setup
+- The edit function defines the block as seen in the editor.
+- The save function defines how the block looks on the front end.
+- You can add block attributes in the attributes property.
 
-### Webpack Configuration for JavaScript and SCSS
-
-Webpack is a powerful module bundler that can transform, bundle, or package just about any resource or asset. Here's a step-by-step guide to setting up Webpack in your WordPress plugin development environment:
-
-1. **Install Webpack and Necessary Loaders**
-
-   First, install Webpack along with loaders for JavaScript and SCSS. Run the following commands in your plugin directory:
-
-   ```bash
-   npm install --save-dev webpack webpack-cli style-loader css-loader sass-loader sass
-   npm install --save-dev babel-loader @babel/core @babel/preset-env
-    ```
-This will install Webpack and the loaders required for processing JavaScript, SCSS, and CSS.
-
-### Create a Webpack Configuration File
-
-Create a webpack.config.js file in the root of your plugin directory. This file will define how Webpack should process your JavaScript and SCSS files.
+### 3.3. Enqueue Editor Styles
+Optionally, you can add styles specific to the block editor.
+- In your my-custom-block.php file, enqueue an editor style:
 ```
-const path = require('path');
-
-module.exports = {
-  // Entry point of your application
-  entry: './blocks/example-block/index.js',
-
-  // Output configuration
-  output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-          },
-        },
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'style-loader', // Injects styles into the DOM
-          'css-loader',   // Translates CSS into CommonJS
-          'sass-loader',  // Compiles Sass to CSS
-        ],
-      },
-    ],
-  },
-
-  // Optional: Enable source maps for debugging
-  devtool: 'source-map',
-};
-
-```
-- The entry field specifies the entry point of your application (usually the main JavaScript file of your block).
-- The output field defines where to output the bundled files.
-- The rules array within the module field tells Webpack how to handle different types of files. Here, it's configured to use Babel for JavaScript and the appropriate loaders for SCSS files.
-- The devtool option is for generating source maps, which is helpful for debugging.
-
-### Update NPM Scripts for Development and Production
-
-Modify your package.json to include scripts for running Webpack in development and production modes:
-
-```
-"scripts": {
-  "start": "webpack --watch",
-  "build": "webpack --mode production"
+function my_custom_block_editor_assets() {
+    wp_enqueue_style(
+        'my-custom-block-editor-style', // Handle for the style.
+        plugins_url('editor.css', __FILE__), // Path to the CSS file.
+        array(), // Dependency array.
+        filemtime(plugin_dir_path(__FILE__) . 'editor.css') // Version: file modification time.
+    );
 }
+
+add_action('enqueue_block_editor_assets', 'my_custom_block_editor_assets');
 ```
-The start script runs Webpack in watch mode, automatically rebuilding your bundle when files change.
-The build script generates a production build, which is optimized and minified.
+- This CSS file will only affect the block within the Gutenberg editor.
+With these steps, your custom block is now registered in WordPress. You can start editing it in the Gutenberg editor and see how it behaves in the frontend.
+## Step 4: Creating the Block's Edit and Save Functions
+Detailed code for the edit and save functions of your block.
 
-### Running Webpack
+## Step 5: Enqueuing Block Assets (JavaScript and CSS)
+Instructions for enqueuing JavaScript and CSS files for the block.
 
-Use npm start to start Webpack in development mode. It will watch for changes in your files and rebuild as needed.
-Use npm run build for a production build of your assets.
+## Step 6: Adding Block Attributes
+Explanation on how to add and handle block attributes.
+
+## Step 7: Testing and Debugging Your Block
+Tips on how to test and debug your custom block.
+
+## Step 8: Packaging and Distributing Your Block
+Guidance on packaging your block for distribution.
+
+## Conclusion
+Final thoughts and additional resources.
