@@ -77,7 +77,7 @@ npm install --save-dev webpack webpack-cli @babel/core babel-loader @babel/prese
 ### 1.3.5. Adding Block Files
 - In each block directory, add JavaScript and CSS files (e.g., index.js, editor.css, style.css).
 
-###1.3.6. Configuring Webpack
+### 1.3.6. Configuring Webpack
 - Create a webpack.config.js file in your plugin root.
 
 Configure Webpack to have multiple entry points, one for each block:
