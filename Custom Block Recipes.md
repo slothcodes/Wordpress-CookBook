@@ -108,6 +108,12 @@ Webpack needs to be configured to specify the mode: development or production. T
   "build": "webpack --mode production"
 }
 ```
+Also, update package.json to use babel
+```
+"babel": {
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
+  },
+```
 - start runs Webpack in development mode with the --watch flag.
 
 - build runs Webpack in production mode for optimizations.
