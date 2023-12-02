@@ -183,10 +183,6 @@ function my_custom_block_assets() {
     );
 }
 
-add_action('enqueue_block_assets', 'my_custom_block_assets');
-add_action('enqueue_block_editor_assets', 'my_custom_block_assets');
-
-
 // Hook: Frontend assets.
 add_action('enqueue_block_assets', 'my_custom_block_assets');
 
