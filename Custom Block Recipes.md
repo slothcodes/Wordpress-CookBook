@@ -1,4 +1,6 @@
 # WordPress Custom Block Creation Cheat Sheet
+## Table Of Contents
+[Step 1: Setting Up Your Development Environment](#step-1-setting-up-your-development-environment)
 
 ## Step 1: Setting Up Your Development Environment
 
@@ -331,5 +333,3 @@ Tips on how to test and debug your custom block.
 ## Step 8: Packaging and Distributing Your Block
 Guidance on packaging your block for distribution.
 
-## Conclusion
-Final thoughts and additional resources.
