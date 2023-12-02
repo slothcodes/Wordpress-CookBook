@@ -21,6 +21,7 @@ Organize your plugin with a main PHP file and a 'blocks' folder for block files.
 // Structure of your plugin directory
 plugin-name/
 ├── plugin-name.php       // Main plugin PHP file
+|-- index.js              // For Importing blocks and acting as main entry point
 └── blocks/               // Folder for Gutenberg blocks
     ├── block-1/
     │   ├── index.js      // JavaScript file for block functionality
