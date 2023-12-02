@@ -1,34 +1,38 @@
 # WordPress Custom Block Creation Cheat Sheet
+
 ## Table Of Contents
 [Step 1: Setting Up Your Development Environment](#step-1-setting-up-your-development-environment)  
-[1.1. Install a Local Server Environment](#1-1-install-a-local-server-environment)  
-[1.2. Install WordPress Locally](#1-2-Install-WordPress-Locally)
-[1.3. Set Up Node.js and NPM](#1.3. Set Up Node.js and NPM)
-[1.4. Install a Code Editor](#1.4. Install a Code Editor)
-[1.5. WordPress Environment Check](#1.5. WordPress Environment Check)
-[Step 2: Creating a Custom Plugin for Your Block](#Step 2: Creating a Custom Plugin for Your Block)
-[2.1. Create a New Plugin Directory](#2.1. Create a New Plugin Directory)
-[2.2. Create the Main Plugin File](#2.2. Create the Main Plugin File)
-[2.3. Create JavaScript and CSS Files](#2.3. Create JavaScript and CSS Files)
-[2.4. Write Basic Block JavaScript](#2.4. Write Basic Block JavaScript)
-[Step 3: Registering a New Block in WordPress](#Step 3: Registering a New Block in WordPress)
-[3.1. Register Block Type in PHP](#3.1. Register Block Type in PHP)
-[3.2. Edit JavaScript Block Registration](#3.2. Edit JavaScript Block Registration)
-[3.3. Enqueue Editor Styles](#3.3. Enqueue Editor Styles)
-[Step 4: Creating the Block's Edit and Save Functions](#Step 4: Creating the Block's Edit and Save Functions)
-[4.1. The Edit Function](#4.1. The Edit Function)
-[4.2. The Save Function](#4.2. The Save Function)
-[Step 5: Enqueuing Block Assets (JavaScript and CSS)](#Step 5: Enqueuing Block Assets (JavaScript and CSS))
-[5.1. Enqueue JavaScript File](#5.1. Enqueue JavaScript File)
-[5.2. Enqueue CSS File](#5.2. Enqueue CSS File)
-[](#)
-[](#)
-[](#)
-[](#)
-[](#)
-[](#)
-[](#)
-[](#)
+  - [1.1. Install a Local Server Environment](#11-install-a-local-server-environment)  
+  - [1.2. Install WordPress Locally](#12-install-wordpress-locally)
+  - [1.3. Set Up Node.js and NPM](#13-set-up-nodejs-and-npm)
+  - [1.4. Install a Code Editor](#14-install-a-code-editor)
+  - [1.5. WordPress Environment Check](#15-wordpress-environment-check)
+  
+[Step 2: Creating a Custom Plugin for Your Block](#step-2-creating-a-custom-plugin-for-your-block)
+  - [2.1. Create a New Plugin Directory](#21-create-a-new-plugin-directory)
+  - [2.2. Create the Main Plugin File](#22-create-the-main-plugin-file)
+  - [2.3. Create JavaScript and CSS Files](#23-create-javascript-and-css-files)
+  - [2.4. Write Basic Block JavaScript](#24-write-basic-block-javascript)
+  
+[Step 3: Registering a New Block in WordPress](#step-3-registering-a-new-block-in-wordpress)
+  - [3.1. Register Block Type in PHP](#31-register-block-type-in-php)
+  - [3.2. Edit JavaScript Block Registration](#32-edit-javascript-block-registration)
+  - [3.3. Enqueue Editor Styles](#33-enqueue-editor-styles)
+  
+[Step 4: Creating the Block's Edit and Save Functions](#step-4-creating-the-blocks-edit-and-save-functions)
+  - [4.1. The Edit Function](#41-the-edit-function)
+  - [4.2. The Save Function](#42-the-save-function)
+  
+[Step 5: Enqueuing Block Assets (JavaScript and CSS)](#step-5-enqueuing-block-assets-javascript-and-css)
+  - [5.1. Enqueue JavaScript File](#51-enqueue-javascript-file)
+  - [5.2. Enqueue CSS File](#52-enqueue-css-file)
+  
+[Step 6: Adding Block Attributes](#step-6-adding-block-attributes)
+  
+[Step 7: Testing and Debugging Your Block](#step-7-testing-and-debugging-your-block)
+  
+[Step 8: Packaging and Distributing Your Block](#step-8-packaging-and-distributing-your-block)
+
 
 
 ## Step 1: Setting Up Your Development Environment
