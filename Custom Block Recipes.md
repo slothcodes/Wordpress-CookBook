@@ -10,6 +10,7 @@
     6. [Creating Dynamic Blocks](#f-creating-dynamic-blocks)
     7. [Server-Side Rendering](#g-server-side-rendering)
     8. [Setting Up React and Build Processes](#h-setting-up-react-and-build-processes)
+    9. [Build Process Setup](#build-process-setup)
 
 ## 1. Setting Up Custom Gutenberg Blocks
 
