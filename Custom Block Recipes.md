@@ -69,6 +69,8 @@ You can use tools like XAMPP, MAMP, or Local by Flywheel. For this example, we'l
 Install Webpack, Babel, and other necessary build tools:
 ```
 npm install --save-dev webpack webpack-cli @babel/core babel-loader @babel/preset-env @wordpress/scripts
+npm install --save-dev @babel/preset-react
+
 ```
 ### 1.3.4. Creating Block Directories
 - Create a src directory within your plugin folder.
