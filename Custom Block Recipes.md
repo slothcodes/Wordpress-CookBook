@@ -113,15 +113,7 @@ Webpack needs to be configured to specify the mode: development or production. T
 ### 1.3.5.3. Running Webpack
 Use npm start for development builds.
 Use npm run build for optimized production builds.
-### 1.3.7. Setting Up NPM Scripts
-- Modify your package.json to include scripts for start and build:
-```
-"scripts": {
-  "start": "webpack --watch",
-  "build": "webpack --mode production"
-}
-```
-### 1.3.8. Running the Development and Production Builds
+### 1.3.6. Running the Development and Production Builds
 Use npm start for development. This will watch your files for changes and recompile as needed.
 Use npm run build for creating production builds.
 
