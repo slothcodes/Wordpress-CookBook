@@ -274,20 +274,83 @@ registerBlockType('your-plugin/your-custom-block', {
 ```
 ## Build Process Setup
 
-### Webpack Configuration
-Set up Webpack to bundle your JavaScript and SCSS files. 
-Create a webpack.config.js file with the necessary configuration for React, Babel, and SCSS processing.
+### Webpack Configuration for JavaScript and SCSS
 
-### NPM Scripts for Development and Production
+Webpack is a powerful module bundler that can transform, bundle, or package just about any resource or asset. Here's a step-by-step guide to setting up Webpack in your WordPress plugin development environment:
 
-Modify your package.json to include scripts for development and production builds.
+1. **Install Webpack and Necessary Loaders**
+
+   First, install Webpack along with loaders for JavaScript and SCSS. Run the following commands in your plugin directory:
+
+   ```bash
+   npm install --save-dev webpack webpack-cli style-loader css-loader sass-loader sass
+   npm install --save-dev babel-loader @babel/core @babel/preset-env
+    ```
+This will install Webpack and the loaders required for processing JavaScript, SCSS, and CSS.
+
+### Create a Webpack Configuration File
+
+Create a webpack.config.js file in the root of your plugin directory. This file will define how Webpack should process your JavaScript and SCSS files.
+```
+const path = require('path');
+
+module.exports = {
+  // Entry point of your application
+  entry: './blocks/example-block/index.js',
+
+  // Output configuration
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js',
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader', // Injects styles into the DOM
+          'css-loader',   // Translates CSS into CommonJS
+          'sass-loader',  // Compiles Sass to CSS
+        ],
+      },
+    ],
+  },
+
+  // Optional: Enable source maps for debugging
+  devtool: 'source-map',
+};
+
+```
+- The entry field specifies the entry point of your application (usually the main JavaScript file of your block).
+- The output field defines where to output the bundled files.
+- The rules array within the module field tells Webpack how to handle different types of files. Here, it's configured to use Babel for JavaScript and the appropriate loaders for SCSS files.
+- The devtool option is for generating source maps, which is helpful for debugging.
+
+### Update NPM Scripts for Development and Production
+
+Modify your package.json to include scripts for running Webpack in development and production modes:
+
 ```
 "scripts": {
   "start": "webpack --watch",
   "build": "webpack --mode production"
 }
 ```
-### Running the Build Process
+The start script runs Webpack in watch mode, automatically rebuilding your bundle when files change.
+The build script generates a production build, which is optimized and minified.
 
-Use npm start to start the development build process. It will watch for file changes and recompile as needed.
-Use npm run build to create a production build.
+### Running Webpack
+
+Use npm start to start Webpack in development mode. It will watch for changes in your files and rebuild as needed.
+Use npm run build for a production build of your assets.
