@@ -1,8 +1,8 @@
 # WordPress Custom Block Creation Cheat Sheet
 ## Table Of Contents
 [Step 1: Setting Up Your Development Environment](#step-1-setting-up-your-development-environment)
-[1.1. Install a Local Server Environment](#1.1. Install a Local Server Environment)
-[1.2. Install WordPress Locally](#1.2. Install WordPress Locally)
+[1.1. Install a Local Server Environment](#1-1-install-a-local-server-environment)
+[1.2. Install WordPress Locally](#1-2-Install-WordPress-Locally)
 [1.3. Set Up Node.js and NPM](#1.3. Set Up Node.js and NPM)
 [1.4. Install a Code Editor](#1.4. Install a Code Editor)
 [1.5. WordPress Environment Check](#1.5. WordPress Environment Check)
