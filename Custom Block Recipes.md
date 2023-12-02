@@ -27,11 +27,6 @@
   - [7.1. Testing Your Block](#71-testing-your-block)
   - [7.2. Debugging Your Block](#72-debugging-your-block)
   - [7.3. Common Issues and Solutions](#73-common-issues-and-solutions)
-- [Step 8: Packaging and Distributing Your Block](#step-8-packaging-and-distributing-your-block)
-  - [8.1. Preparing for Distribution](#81-preparing-for-distribution)
-  - [8.2. Submitting to the WordPress Plugin Directory](#82-submitting-to-the-wordpress-plugin-directory)
-  - [8.3. Distributing via GitHub](#83-distributing-via-github)
-  - [8.4. Updating Your Block](#84-updating-your-block)
 
 
 ## Step 1: Setting Up Your Development Environment
@@ -506,7 +501,3 @@ When you encounter issues or unexpected behavior, debugging is necessary to find
 - **Attribute Errors**: Check if attributes are correctly defined and used in both edit and save functions.
 
 Remember, thorough testing and effective debugging are key to creating a robust and reliable custom block for WordPress.
-
-## Step 8: Packaging and Distributing Your Block
-Guidance on packaging your block for distribution.
-
