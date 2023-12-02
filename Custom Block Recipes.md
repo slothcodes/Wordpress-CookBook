@@ -2,8 +2,8 @@
 
 ## Table of Contents
 1. [Setting Up Custom Gutenberg Blocks](#1-setting-up-custom-gutenberg-blocks)
-    1. [Folder Structure](#a-folder-structure)
-    2. [File Setup](#b-file-setup)
+    1. [Plugin Structure](#a-plugin-structure)
+    2. [Folder and File Setup](#b-folder-and-file-setup)
     3. [Initializing NPM and Git](#c-initializing-npm-and-git)
     4. [Connecting to GitHub](#d-connecting-to-github)
     5. [Enqueueing Styles and Scripts](#e-enqueueing-styles-and-scripts)
@@ -12,31 +12,40 @@
 
 ## 1. Setting Up Custom Gutenberg Blocks
 
-### A. Folder Structure
-Create a 'blocks' folder within your plugin directory to organize your block files.
+### A. Plugin Structure
+Organize your plugin with a main PHP file and a 'blocks' folder for block files.
 
 ```php
 // Structure of your plugin directory
 plugin-name/
-└── blocks/
+├── plugin-name.php       // Main plugin PHP file
+└── blocks/               // Folder for Gutenberg blocks
     ├── block-1/
-    │   ├── index.js    // JavaScript file for block functionality
-    │   ├── style.scss  // SCSS file for front-end styles
-    │   └── editor.scss // SCSS file for editor styles
+    │   ├── index.js      // JavaScript file for block functionality
+    │   ├── style.scss    // SCSS file for front-end styles
+    │   └── editor.scss   // SCSS file for editor styles
     └── block-2/
         ├── index.js
         ├── style.scss
         └── editor.scss
 ```
-### B. File Setup
-Set up individual directories for each block within the 'blocks' folder.
+The main plugin file (plugin-name.php) is responsible for initializing your custom Gutenberg blocks and any other plugin functionality.
+### B. Folder and File Setup
+Set up individual directories for each block within the 'blocks' folder and include a main plugin file.
 ```
-// Example structure for a single block
-blocks/
-└── example-block/
-    ├── index.js     // Main JavaScript file for the block
-    ├── style.scss   // Styles for both front-end and editor
-    └── editor.scss  // Styles exclusive to the editor
+// Main plugin file: plugin-name.php
+<?php
+/**
+ * Plugin Name: Your Plugin Name
+ * Description: A description of your plugin.
+ * Version: 1.0
+ * Author: Your Name
+ */
+
+// Your plugin's main code goes here
+
+// Include enqueue functions and block registrations
+
 ```
 
 ### C. Initializing NPM and Git
