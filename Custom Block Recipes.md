@@ -90,7 +90,8 @@ Webpack needs to be configured to specify the mode: development or production. T
     return {
       mode: argv.mode || 'production', // Defaults to 'production' if not set
       entry: {
-        // Your entry points
+        block1: './src/block1/index.js',
+        block2: './src/block2/index.js',
       },
       // Other configuration settings...
     };
