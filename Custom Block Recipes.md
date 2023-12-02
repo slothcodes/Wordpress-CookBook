@@ -135,6 +135,7 @@ Inside your new directory, create the main PHP file for the plugin. This file wi
 Also, create an index.js file for importing the individuals blocks.
 
 - Create a file named `my-custom-block.php`.
+- create a file named 'index.js'.
 - Add the following content to the file:
 
 ```php
