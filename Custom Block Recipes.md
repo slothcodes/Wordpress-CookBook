@@ -202,11 +202,125 @@ add_action('enqueue_block_editor_assets', 'my_custom_block_editor_assets');
 ```
 - This CSS file will only affect the block within the Gutenberg editor.
 With these steps, your custom block is now registered in WordPress. You can start editing it in the Gutenberg editor and see how it behaves in the frontend.
-## Step 4: Creating the Block's Edit and Save Functions
-Detailed code for the edit and save functions of your block.
 
+## Step 4: Creating the Block's Edit and Save Functions
+
+The `edit` and `save` functions in your block's JavaScript file are essential for defining the block's behavior in the editor and its appearance on the website.
+
+### 4.1. The Edit Function
+
+The `edit` function is responsible for rendering the block within the WordPress editor. It's where you define the block's interactive editing interface.
+
+- Update your `block.js` file with the following `edit` function:
+
+```javascript
+const { __ } = wp.i18n; // Import __() from wp.i18n for internationalization
+const { RichText } = wp.blockEditor; // Import RichText component from wp.blockEditor
+
+registerBlockType('my-custom-block/my-block', {
+    // ...other properties
+
+    edit: ({ attributes, setAttributes, className }) => {
+        const { content } = attributes;
+
+        const onChangeContent = newContent => {
+            setAttributes({ content: newContent });
+        };
+
+        return (
+            <RichText
+                tagName="p" // The tag here is the HTML element to be used for the editable part.
+                className={className}
+                value={content}
+                onChange={onChangeContent}
+                placeholder={__('Enter your content here', 'my-custom-block')}
+            />
+        );
+    },
+
+    // ...save function
+});
+```
+- This code uses the RichText component to create an editable text area.
+- The setAttributes function is used to save the changes made by the user.
+
+### 4.2. The Save Function
+The save function defines how the block's content is saved and then rendered on the frontend.
+
+- Continue editing your block.js file with the save function:
+```
+const { RichText } = wp.blockEditor; // Import RichText component from wp.blockEditor
+
+registerBlockType('my-custom-block/my-block', {
+    // ...other properties
+
+    // ...edit function
+
+    save: ({ attributes }) => {
+        const { content } = attributes;
+
+        return (
+            <RichText.Content
+                tagName="p" // The tag here matches the tag used in the edit function.
+                value={content}
+            />
+        );
+    },
+});
+```
+- The save function returns the HTML structure that will be saved to the post content.
+- The RichText.Content component outputs the saved content.
+- 
 ## Step 5: Enqueuing Block Assets (JavaScript and CSS)
-Instructions for enqueuing JavaScript and CSS files for the block.
+
+Enqueuing assets is crucial for adding JavaScript and CSS to your custom block. This step ensures that your block's scripts and styles are loaded correctly in the WordPress editor and on the front end.
+
+### 5.1. Enqueue JavaScript File
+
+First, you need to enqueue the JavaScript file that contains your block's functionality.
+
+- Edit your main plugin file, `my-custom-block.php`.
+- Add the following PHP function to enqueue your JavaScript file:
+
+```php
+function my_custom_block_enqueue() {
+    // Enqueue the block's script
+    wp_enqueue_script(
+        'my-custom-block-js', // Handle for the script.
+        plugins_url('/build/index.js', __FILE__), // Path to the JS file.
+        array('wp-blocks', 'wp-element', 'wp-editor'), // Dependencies.
+        filemtime(plugin_dir_path(__FILE__) . '/build/index.js') // Version: file modification time.
+    );
+}
+
+add_action('enqueue_block_assets', 'my_custom_block_enqueue');
+```
+- This function hooks into WordPress to enqueue your block script.
+- Ensure the script dependencies and path are correctly set.
+
+### 5.2. Enqueue CSS File
+Next, enqueue the CSS file to style your block in the editor and on the front end.
+
+Continue editing my-custom-block.php.
+Add the following code to enqueue your CSS file:
+```
+function my_custom_block_enqueue() {
+    // ...JavaScript enqueue code...
+
+    // Enqueue the block's CSS
+    wp_enqueue_style(
+        'my-custom-block-css', // Handle for the stylesheet.
+        plugins_url('/build/style.css', __FILE__), // Path to the CSS file.
+        array(), // Dependencies (if any).
+        filemtime(plugin_dir_path(__FILE__) . '/build/style.css') // Version: file modification time.
+    );
+}
+
+add_action('enqueue_block_assets', 'my_custom_block_enqueue');
+```
+- This code adds your block's stylesheet to the WordPress site.
+- It's important to specify the correct path to your CSS file.
+By following these steps, you ensure that your custom block's JavaScript and CSS are properly enqueued and loaded where they're needed.
 
 ## Step 6: Adding Block Attributes
 Explanation on how to add and handle block attributes.
