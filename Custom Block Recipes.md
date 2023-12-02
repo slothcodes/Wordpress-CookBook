@@ -129,9 +129,10 @@ First, create a directory for your plugin in the `wp-content/plugins` directory 
 - Navigate to `wp-content/plugins`.
 - Create a new directory named `my-custom-block`.
 
-### 2.2. Create the Main Plugin File
+### 2.2. Create the Main Plugin Files
 
 Inside your new directory, create the main PHP file for the plugin. This file will contain plugin metadata and initialization code.
+Also, create an index.js file for importing the individuals blocks.
 
 - Create a file named `my-custom-block.php`.
 - Add the following content to the file:
