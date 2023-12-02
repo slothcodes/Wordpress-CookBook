@@ -9,7 +9,7 @@
   - [1.5. WordPress Environment Check](#15-wordpress-environment-check)
 - [Step 2: Creating a Custom Plugin for Your Block](#step-2-creating-a-custom-plugin-for-your-block)
   - [2.1. Create a New Plugin Directory](#21-create-a-new-plugin-directory)
-  - [2.2. Create the Main Plugin File](#22-create-the-main-plugin-file)
+  - [2.2. Create the Main Plugin Files](#22-create-the-main-plugin-files)
   - [2.3. Create JavaScript and CSS Files](#23-create-javascript-and-css-files)
   - [2.4. Write Basic Block JavaScript](#24-write-basic-block-javascript)
 - [Step 3: Registering a New Block in WordPress](#step-3-registering-a-new-block-in-wordpress)
