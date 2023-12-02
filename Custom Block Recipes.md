@@ -55,12 +55,59 @@ You can use tools like XAMPP, MAMP, or Local by Flywheel. For this example, we'l
 - Start WordPress installation by navigating to `http://localhost/my-block-plugin`.
 - Follow the installation steps.
 
-### 1.3. Set Up Node.js and NPM
+### 1.3. Manually Creating a Multi-Block WordPress Plugin
 
-You need Node.js and NPM to compile JavaScript and manage dependencies.
+#### 1.3.1. Setting Up the Plugin Directory
 
-- Download and install Node.js from [https://nodejs.org/](https://nodejs.org/).
-- Verify installation by running `node -v` and `npm -v` in your command line or terminal.
+- Create a new directory in `wp-content/plugins` for your plugin.
+- Inside this directory, create a PHP file for your plugin (e.g., `my-multi-block-plugin.php`) with the necessary WordPress plugin header information.
+
+#### 1.3.2. Initializing Node.js and NPM
+
+- Inside your plugin directory, initialize a Node.js project:
+
+  ```bash
+  npm init -y
+  ```
+- This creates a package.json file in your directory.
+- 
+### 1.3.3. Installing Build Tools
+Install Webpack, Babel, and other necessary build tools:
+```
+npm install --save-dev webpack webpack-cli @babel/core babel-loader @babel/preset-env @wordpress/scripts
+```
+### 1.3.4. Creating Block Directories
+- Create a src directory within your plugin folder.
+- Inside src, create separate directories for each block (e.g., block1, block2).
+
+### 1.3.5. Adding Block Files
+- In each block directory, add JavaScript and CSS files (e.g., index.js, editor.css, style.css).
+
+###1.3.6. Configuring Webpack
+- Create a webpack.config.js file in your plugin root.
+
+Configure Webpack to have multiple entry points, one for each block:
+```
+module.exports = {
+  entry: {
+    block1: './src/block1/index.js',
+    block2: './src/block2/index.js',
+    // Add more blocks as needed
+  },
+  // Further configuration...
+};
+```
+### 1.3.7. Setting Up NPM Scripts
+- Modify your package.json to include scripts for start and build:
+```
+"scripts": {
+  "start": "webpack --watch",
+  "build": "webpack --mode production"
+}
+```
+### 1.3.8. Running the Development and Production Builds
+Use npm start for development. This will watch your files for changes and recompile as needed.
+Use npm run build for creating production builds.
 
 ### 1.4. Install a Code Editor
 
@@ -432,7 +479,34 @@ Attributes thus become the backbone of your block's functionality, allowing it t
 
 
 ## Step 7: Testing and Debugging Your Block
-Tips on how to test and debug your custom block.
+
+Testing and debugging are critical phases in the development of your custom block. They ensure your block functions as intended and help identify any issues that need to be resolved.
+
+### 7.1. Testing Your Block
+
+Testing involves checking your block's functionality in various scenarios and ensuring it behaves as expected. 
+
+- **Manual Testing**: Interact with your block in the Gutenberg editor. Add it to a post, change its attributes, and see how it behaves.
+- **Visual Testing**: Ensure your block renders correctly in both the editor and the front end. Pay attention to styling and layout.
+- **Console Logging**: Use `console.log()` in your JavaScript code to output attribute values and other important information to the browser's console. This helps in understanding the block's state at different stages.
+- **Responsiveness**: Test your block on different screen sizes to ensure it's responsive and looks good on mobile, tablet, and desktop views.
+
+### 7.2. Debugging Your Block
+
+When you encounter issues or unexpected behavior, debugging is necessary to find and fix the problems.
+
+- **JavaScript Debugging**: Use browser developer tools to debug your JavaScript code. Set breakpoints, step through your code, and inspect variables.
+- **PHP Debugging**: If your block involves PHP code, enable WP_DEBUG in your `wp-config.php` to see PHP errors, warnings, and notices.
+- **Error Logs**: Check WordPress and server error logs for any relevant error messages that can give clues about the issue.
+- **Community Forums and Documentation**: Utilize the WordPress community forums and developer documentation for solutions to common problems.
+
+### 7.3. Common Issues and Solutions
+
+- **Block Not Appearing**: Ensure your block is correctly registered, and the JavaScript and PHP files are correctly enqueued.
+- **Styling Issues**: Verify that your CSS files are properly enqueued and the styles are correctly applied.
+- **Attribute Errors**: Check if attributes are correctly defined and used in both edit and save functions.
+
+Remember, thorough testing and effective debugging are key to creating a robust and reliable custom block for WordPress.
 
 ## Step 8: Packaging and Distributing Your Block
 Guidance on packaging your block for distribution.
