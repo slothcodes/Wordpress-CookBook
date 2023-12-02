@@ -77,20 +77,28 @@ npm install --save-dev webpack webpack-cli @babel/core babel-loader @babel/prese
 ### 1.3.5. Adding Block Files
 - In each block directory, add JavaScript and CSS files (e.g., index.js, editor.css, style.css).
 
-### 1.3.6. Configuring Webpack
-- Create a webpack.config.js file in your plugin root.
+### 1.3.6. Configuring Webpack for Development and Production
 
-Configure Webpack to have multiple entry points, one for each block:
-```
-module.exports = {
-  entry: {
-    block1: './src/block1/index.js',
-    block2: './src/block2/index.js',
-    // Add more blocks as needed
-  },
-  // Further configuration...
-};
-```
+Webpack needs to be configured to specify the mode: development or production. This impacts various build optimizations and behaviors.
+
+#### 1.3.6.1. Updating Webpack Configuration
+
+- Modify your `webpack.config.js` to dynamically set the mode:
+
+  ```javascript
+  module.exports = (env, argv) => {
+    return {
+      mode: argv.mode || 'production', // Defaults to 'production' if not set
+      entry: {
+        // Your entry points
+      },
+      // Other configuration settings...
+    };
+  };`
+  
+- This configuration will use the mode passed from the NPM script.
+### 1.3.5.2. Modifying NPM Scripts for Mode
+- In your package.json, update the scripts to define the mode:
 ### 1.3.7. Setting Up NPM Scripts
 - Modify your package.json to include scripts for start and build:
 ```
