@@ -154,19 +154,23 @@ defined('ABSPATH') or die('No script kiddies please!');
  */
 function my_custom_block_assets() {
     wp_enqueue_script(
-        'my-custom-block-js', // Handle.
-        plugins_url('block.js', __FILE__), // block.js: The block's JS.
-        array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'), // Dependencies, should include 'wp-element'.
-        filemtime(plugin_dir_path(__FILE__) . 'block.js') // Version: File modification time.
+        'my-custom-block-js',
+        plugins_url('build/index.js', __FILE__),
+        array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'),
+        filemtime(plugin_dir_path(__FILE__) . 'build/index.js')
     );
 
     wp_enqueue_style(
-        'my-custom-block-editor-css', // Handle.
-        plugins_url('editor.css', __FILE__), // editor.css: Editor style.
-        array('wp-edit-blocks'), // Dependency to include the CSS after it.
-        filemtime(plugin_dir_path(__FILE__) . 'editor.css') // Version: File modification time.
+        'my-custom-block-editor-css',
+        plugins_url('build/index.css', __FILE__), // If you have a main CSS file
+        array('wp-edit-blocks'),
+        filemtime(plugin_dir_path(__FILE__) . 'build/index.css')
     );
 }
+
+add_action('enqueue_block_assets', 'my_custom_block_assets');
+add_action('enqueue_block_editor_assets', 'my_custom_block_assets');
+
 
 // Hook: Frontend assets.
 add_action('enqueue_block_assets', 'my_custom_block_assets');
