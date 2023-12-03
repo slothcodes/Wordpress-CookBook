@@ -1,5 +1,5 @@
 ## Table of Contents
-
+[TLDR Steps](#TLDR-Steps)
 1. [Step 1: Registering a Custom Post Type](#step-1-registering-a-custom-post-type)
    - [Register Post Type Code](#register-post-type-code)
    - [Label Descriptions](#label-descriptions)
@@ -18,6 +18,45 @@
      - [Capability Type](#capability-type)
      - [Menu Position and Icon](#menu-position-and-icon)
 
+## TLDR Steps
+### Steps to Initialize a Basic Custom Post Type
+#### Step 1: Open Your Theme's Functions.php File
+- Locate and open the functions.php file in your WordPress theme (preferably a child theme).
+#### Step 2: Insert Custom Post Type Function
+- At the end of the functions.php file, insert the custom post type function:
+```
+add_action('init', 'create_custom_post_type');
+
+function create_custom_post_type() {
+    // Add code for labels and arguments here
+}
+```
+#### Step 3: Define Labels for the Post Type
+- Inside the create_custom_post_type function, start by defining labels for your custom post type:
+```
+$labels = array(
+    'name' => _x('Books', 'Post type general name', 'your-textdomain'),
+    'singular_name' => _x('Book', 'Post type singular name', 'your-textdomain'),
+    // Add additional labels as necessary
+);
+```
+#### Step 4: Set Up Arguments for the Post Type
+- Define the arguments ($args) for your custom post type:
+```
+$args = array(
+    'labels' => $labels,
+    'public' => true,
+    // Include other arguments as needed
+);
+```
+#### Step 5: Register the Post Type
+- Complete the function by registering the post type:
+```
+register_post_type('book', $args);
+```
+#### Step 6: Save and Upload the Functions.php File
+- Save the changes to your functions.php file and, if necessary, upload it to your server.
+## Detailed Steps
 
 ### Step 1: Registering a Custom Post Type
 Now, let's register a custom post type. We'll do this in the functions.php file of your child theme.
