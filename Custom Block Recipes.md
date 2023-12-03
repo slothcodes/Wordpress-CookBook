@@ -30,8 +30,8 @@ Make a folder for each block in the blocks subfolder
 #### Step 3.5: Update the plugins main .php file to register the blocks
 ```
 function create_block_your_plugin_block_init() {
-    register_block_type( __DIR__ . '/build/block-1' );
-    register_block_type( __DIR__ . '/build/block-2' );
+    register_block_type( __DIR__ . '/build/blocks/block-1' );
+    register_block_type( __DIR__ . '/build/blocks/block-2' );
 }
 add_action( 'init', 'create_block_your_plugin_block_init' );
 ```
