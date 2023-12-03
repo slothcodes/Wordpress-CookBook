@@ -1,4 +1,3 @@
-## Table of Contents
 [TLDR Steps](#TLDR-Steps)
 1. [Step 1: Registering a Custom Post Type](#step-1-registering-a-custom-post-type)
    - [Register Post Type Code](#register-post-type-code)
@@ -17,6 +16,11 @@
      - [Archive Page Settings](#archive-page-settings)
      - [Capability Type](#capability-type)
      - [Menu Position and Icon](#menu-position-and-icon)
+3. [Adding Meta Fields to a Custom Post Type](#adding-meta-fields-to-a-custom-post-type)
+   - [Step 1: Define Meta Box and Fields](#step-1-define-meta-box-and-fields)
+   - [Step 2: Create the Callback Function for Meta Box Content](#step-2-create-the-callback-function-for-meta-box-content)
+   - [Step 3: Save Meta Box Data](#step-3-save-meta-box-data)
+   - [Step 4: Implementing the Meta Box in Your Theme](#step-4-implementing-the-meta-box-in-your-theme)
 
 ## TLDR Steps
 ### Steps to Initialize a Basic Custom Post Type
