@@ -20,6 +20,7 @@ Make a folder for each block in the blocks subfolder
 - index.js
 - save.js
 - style.scss
+  
 ![block folder layout](https://i.stack.imgur.com/zgqDZ.png)
 
 #### Step 3.4: Update the block.json files to give each block a unique name and title
