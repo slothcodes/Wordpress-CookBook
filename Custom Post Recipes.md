@@ -1,3 +1,4 @@
+# Guide For Making Custom Posts In Wordpress
 [TLDR Steps](#TLDR-Steps)
 1. [Step 1: Registering a Custom Post Type](#step-1-registering-a-custom-post-type)
    - [Register Post Type Code](#register-post-type-code)
