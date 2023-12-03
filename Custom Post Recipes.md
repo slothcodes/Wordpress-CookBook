@@ -140,8 +140,69 @@ This code creates a new custom post type named "Books". This $labels array is pa
 #### 'items_list' => _x('Books list', 'Screen reader text for the item list', 'your-textdomain'):
 - 'items_list': Label for the items list.
 
-### Step 2: Adding the Custom Post Type to Your Site
-After adding this code to your functions.php file, you need to visit your WordPress site. You should now see a new menu item in the WordPress admin for your custom post type.
 
 ### Step 3: Customizing Your Custom Post Type
 You can further customize the custom post type by tweaking the $args array. For example, you can change its visibility, support for certain features like thumbnails, and more.
+
+```
+function create_custom_post_type() {
+    // ... [Previous code for $labels]
+
+    // Customizing the $args array
+    $args = array(
+        // Visibility and Access
+        'public' => true, // Makes it public
+        'show_ui' => true, // Displays the UI in admin
+        'show_in_nav_menus' => true, // Available in navigation menus
+        'show_in_menu' => true, // Visible in the admin menu
+        'show_in_admin_bar' => true, // Visible in the WordPress admin bar
+
+        // Permalinks and Rewrites
+        'rewrite' => array('slug' => 'book'), // Custom slug for permalinks
+
+        // Support for features
+        'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
+
+        // Hierarchical structure
+        'hierarchical' => false, // False like posts, true like pages
+
+        // Archive page settings
+        'has_archive' => true, // Enables archive pages
+
+        // Capability type
+        'capability_type' => 'post', // Uses permissions of 'posts'
+
+        // Menu position and icon
+        'menu_position' => 5, // Position in admin menu
+        'menu_icon' => 'dashicons-book-alt', // Icon for the menu item (a book icon in this case)
+
+        // ... [Other arguments you might want to customize]
+    );
+
+    // Register the post type
+    register_post_type('book', $args);
+}
+add_action('init', 'create_custom_post_type');
+
+```
+### Explanation:
+#### Visibility and Access:
+- 'public', 'show_ui', 'show_in_nav_menus', 'show_in_menu', 'show_in_admin_bar' are all set to true to make the post type fully accessible and visible in the admin area and menus.
+
+#### Permalinks and Rewrites:
+The 'rewrite' argument is used to define the URL slug for your custom post type. Here, it's set to 'book', meaning the URL for this post type will be yourdomain.com/book.
+
+#### Support for Features:
+The 'supports' array lists all the features this post type supports, like the title, editor, author, thumbnails (featured images), excerpts, and comments.
+
+#### Hierarchical Structure:
+'hierarchical' is set to false, meaning this post type will behave like standard posts. If set to true, it would behave like pages, allowing for parent-child relationships.
+
+#### Archive Page Settings:
+'has_archive' is true, enabling archive pages for this post type.
+
+#### Capability Type:
+'capability_type' is set to 'post', which means it will use the same user permissions as standard posts.
+
+#### Menu Position and Icon:
+'menu_position' and 'menu_icon' customize where the post type appears in the admin menu and what icon it uses.
