@@ -1,3 +1,24 @@
+## Table of Contents
+
+1. [Step 1: Registering a Custom Post Type](#step-1-registering-a-custom-post-type)
+   - [Register Post Type Code](#register-post-type-code)
+   - [Label Descriptions](#label-descriptions)
+     - ['name' and '_x() Function](#name-and-_x-function)
+     - ['singular_name' Label](#singular_name-label)
+     - ['menu_name' Label](#menu_name-label)
+     - [More Label Descriptions](#more-label-descriptions)
+2. [Step 3: Customizing Your Custom Post Type](#step-3-customizing-your-custom-post-type)
+   - [Customization Code](#customization-code)
+   - [Explanation of Customizations](#explanation-of-customizations)
+     - [Visibility and Access](#visibility-and-access)
+     - [Permalinks and Rewrites](#permalinks-and-rewrites)
+     - [Support for Features](#support-for-features)
+     - [Hierarchical Structure](#hierarchical-structure)
+     - [Archive Page Settings](#archive-page-settings)
+     - [Capability Type](#capability-type)
+     - [Menu Position and Icon](#menu-position-and-icon)
+
+
 ### Step 1: Registering a Custom Post Type
 Now, let's register a custom post type. We'll do this in the functions.php file of your child theme.
 ```
