@@ -1,0 +1,59 @@
+Block Theme Development Guide For Junior Devs
+
+Understanding Block Themes vs. Traditional Themes
+Key Components of a Block Theme (theme.json, block templates, block patterns)
+
+Working with theme.json
+Structure and Configuration of theme.json
+Setting Global Styles and Theme Settings
+Configuring Color Palettes, Typography, and Layout
+
+Block Templates and Template Parts
+Creating and Modifying Block Templates
+Understanding and Using Template Parts
+Managing Templates in the Site Editor
+
+Creating and Managing Block Patterns
+Designing Custom Block Patterns
+Registering and Using Block Patterns
+Sharing Patterns Across Projects
+
+Custom Blocks Development
+Basics of Creating Custom Blocks with JavaScript
+Utilizing React and JSX in Block Development
+Managing Block Attributes and Dynamic Content
+
+Advanced Block Features
+Implementing Inner Blocks
+Handling Block Variations and Styles
+Integrating with WordPress APIs (Rest API, etc.)
+
+Custom Post Types and Taxonomies in Block Themes
+Registering Custom Post Types and Taxonomies
+Displaying Custom Content in Block Templates
+Querying Posts with Query Loop Block
+
+Theme Settings and Customization
+Adding Theme Supports (alignments, custom spacing, etc.)
+Integrating with the Full Site Editor
+Managing Navigation and Widgets in Block Context
+
+Performance and Optimization in Block Themes
+Best Practices for Efficient Block Code
+Optimizing Block Loading and Rendering
+Implementing Lazy Loading and Asset Minification
+
+Accessibility and Internationalization
+Ensuring Accessibility in Block Themes
+Internationalizing Blocks and Themes
+Best Practices for Accessible Content Creation
+
+Debugging and Testing Block Themes
+Tools and Techniques for Debugging Block Themes
+Testing Block Themes Across Different Devices
+Automated Testing for Custom Blocks
+
+Resources and Community Engagement
+Staying Updated with Gutenberg and Block Development
+Participating in WordPress Community Discussions
+Useful Tools and Plugins for Block Development
