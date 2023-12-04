@@ -310,8 +310,13 @@ You need to save the data entered into the meta fields when a post is saved. Thi
 function mytheme_save_postdata($post_id) {
     // Verify nonce
     if (!isset($_POST['mytheme_nonce']) || !wp_verify_nonce($_POST['mytheme_nonce'], plugin_basename(__FILE__))) {
-        return;
+        return $post_id;
     }
+
+    // Verify nonce.
+    if ( ! wp_verify_nonce( $_POST['mytheme_nonce'], basename(__FILE__) ) ) {
+        return $post_id;
+    };
 
     // Check if not an autosave
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
