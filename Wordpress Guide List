@@ -1,39 +1,168 @@
- 1. **Introduction to Gutenberg Full Site Editor**: Overview of the Gutenberg editor, its capabilities, and how it's integrated into WordPress.
+1. **Introduction to Gutenberg Full Site Editor**
+   - Overview of Gutenberg Editor
+   - Key Features and Capabilities
+   - Integrating Gutenberg with WordPress Themes
+   - User Interface Walkthrough
 
-2. **Developing Custom Blocks**: A step-by-step guide on creating custom Gutenberg blocks from scratch, including coding standards and best practices.
+2. **Developing Custom Blocks**
+   - Setting Up the Development Environment
+   - Understanding Block Structure and Attributes
+   - Building Basic Blocks
+   - Advanced Techniques: Dynamic Blocks and Inner Blocks
+   - Best Practices in Block Development
+   - Basics of Creating Custom Blocks with JavaScript
+   - Utilizing React and JSX in Block Development
+   - Managing Block Attributes and Dynamic Content
 
-3. **Creating Custom Post Types**: Instructions on how to create and manage custom post types without using plugins, with examples.
+3. **Creating Custom Post Types**
+   - Basics of Custom Post Types
+   - Coding Custom Post Types: Step-by-Step
+   - Adding Meta Boxes and Custom Fields
+   - Displaying Custom Post Types in Themes
+   - Best Practices and Performance Considerations
+   - Registering Custom Post Types and Taxonomies
+   - Displaying Custom Content in Block Templates
+   - Querying Posts with Query Loop Block
 
-4. **Agency Coding Standards**: A guide outlining the coding standards and conventions your team follows, including naming conventions, formatting rules, and documentation guidelines.
+4. **Agency Coding Standards**
+   - General Coding Principles
+   - WordPress-Specific Coding Standards
+   - Code Formatting and Commenting Guidelines
+   - Peer Review and Code Collaboration Standards
 
-5. **Version Control Practices**: Detailed guide on using version control systems (like Git), including branch management, commit conventions, and merge requests.
+5. **Version Control Practices**
+   - Introduction to Version Control with Git
+   - Branching Strategies and Workflows
+   - Commit Messages and Standards
+   - Merge Requests and Code Reviews
 
-6. **WordPress Theme Development**: Best practices and standards for developing WordPress themes, particularly with Gutenberg compatibility in mind.
+6. **WordPress Theme Development**
+   - Theme Structure and Hierarchy
+   - Developing Gutenberg-Compatible Themes
+   - Enqueuing Scripts and Styles
+   - Theme Customization Options
+   - Understanding Block Themes vs. Traditional Themes
+   - Key Components of a Block Theme (theme.json, block templates, block patterns)
 
-7. **Responsive Design Techniques**: Guidelines and tips for creating responsive designs that work well with Gutenberg blocks.
+7. **Responsive Design Techniques**
+   - Principles of Responsive Design
+   - Media Queries and Breakpoints
+   - Responsive Images and Videos
+   - Testing and Debugging for Various Devices
 
-8. **Accessibility Standards**: How to ensure that your web designs and custom blocks are accessible, following WCAG guidelines.
+8. **Accessibility Standards**
+   - Understanding Web Accessibility
+   - WordPress and WCAG Compliance
+   - Accessible Design for Custom Blocks
+   - Tools for Testing Accessibility
+   - Ensuring Accessibility in Block Themes
+   - Internationalizing Blocks and Themes
+   - Best Practices for Accessible Content Creation
 
-9. **Performance Optimization**: Techniques for optimizing website performance, including best practices for loading custom blocks and scripts.
+9. **Performance Optimization**
+   - Analyzing Website Performance
+   - Optimizing Load Times for Blocks
+   - Caching Strategies
+   - Database Optimization
+   - Best Practices for Efficient Block Code
+   - Optimizing Block Loading and Rendering
+   - Implementing Lazy Loading and Asset Minification
 
-10. **Security Best Practices**: Essential security practices for developing in WordPress, focusing on custom block and post type security.
+10. **Security Best Practices**
+    - WordPress Security Fundamentals
+    - Securing Custom Blocks and Post Types
+    - Preventing Common Security Vulnerabilities
+    - Regular Security Audits and Updates
 
-11. **Workflow and Collaboration Tools**: Overview of the tools and platforms used for project management, collaboration, and communication within the team.
+11. **Workflow and Collaboration Tools**
+    - Overview of Project Management Tools
+    - Effective Use of Communication Platforms
+    - Collaborative Coding Tools
+    - Time Management and Task Prioritization
 
-12. **Debugging and Troubleshooting**: Common issues and troubleshooting techniques specific to Gutenberg and custom WordPress development.
+12. **Debugging and Troubleshooting**
+    - Common Gutenberg Development Issues
+    - Debugging Tools and Techniques
+    - Browser Console and Debugging Plugins
+    - Troubleshooting Performance Issues
+    - Tools and Techniques for Debugging Block Themes
+    - Testing Block Themes Across Different Devices
+    - Automated Testing for Custom Blocks
 
-13. **Testing and Quality Assurance**: Processes for testing custom blocks, post types, and themes, including automated and manual testing strategies.
+13. **Testing and Quality Assurance**
+    - Unit Testing for WordPress
+    - Automated Testing Tools and Frameworks
+    - Manual Testing Best Practices
+    - Quality Assurance Checklists
 
-14. **Project Lifecycle Management**: Guide to the project lifecycle in your agency, from initial planning to deployment and maintenance.
+14. **Project Lifecycle Management**
+    - Project Planning and Requirements Gathering
+    - Development Phases
+    - Deployment and Launch
+    - Post-Launch Support and Maintenance
 
-15. **Client Communication and Management**: Best practices for communicating with clients, understanding their requirements, and managing expectations.
+15. **Client Communication and Management**
+    - Building Client Relationships
+    - Gathering and Documenting Client Requirements
+    - Managing Client Expectations
+    - Effective Communication Strategies
 
-16. **Update and Maintenance Processes**: Procedures for updating and maintaining WordPress sites, custom blocks, and themes.
+16. **Update and Maintenance Processes**
+    - WordPress Core, Theme, and Plugin Updates
+    - Regular Maintenance Tasks
+    - Backup Strategies
+    - Handling Downtime and Emergencies
 
-17. **Local Development Environment Setup**: How to set up a local development environment that mirrors your agency's standards.
+17. **Local Development Environment Setup**
+    - Choosing a Local Development Environment
+    - Configuring Local Servers
+    - Synchronizing Local and Production Environments
+    - Collaborating in a Local Environment
 
-18. **Deployment Strategies**: Best practices and steps for deploying WordPress sites, especially those with custom blocks and post types.
+18. **Deployment Strategies**
+    - Deployment Best Practices
+    - Continuous Integration and Continuous Deployment (CI/CD)
+    - Rollback Strategies
+    - Post-Deployment Testing
 
-19. **Custom APIs and Integration**: Guidelines for integrating third-party APIs or creating custom APIs within WordPress.
+19. **Custom APIs and Integration**
+    - Integrating Third-Party APIs
+    - Creating Custom RESTful APIs in WordPress
+    - Handling API Authentication and Security
+    - Best Practices for API Performance
 
-20. **Documentation Practices**: The importance of documentation, how to document code effectively, and maintain project documentation.
+20. **Documentation Practices**
+    - Importance and Benefits of Good Documentation
+    - Documenting Code and Architectural Decisions
+    - Project Documentation Standards
+    - Tools and Platforms for Documentation
+
+21. **Working with theme.json**
+    - Structure and Configuration of theme.json
+    - Setting Global Styles and Theme Settings
+    - Configuring Color Palettes, Typography, and Layout
+
+22. **Block Templates and Template Parts**
+    - Creating and Modifying Block Templates
+    - Understanding and Using Template Parts
+    - Managing Templates in the Site Editor
+
+23. **Creating and Managing Block Patterns**
+    - Designing Custom Block Patterns
+    - Registering and Using Block Patterns
+    - Sharing Patterns Across Projects
+
+24. **Advanced Block Features**
+    - Implementing Inner Blocks
+    - Handling Block Variations and Styles
+    - Integrating with WordPress APIs (Rest API, etc.)
+
+25. **Theme Settings and Customization**
+    - Adding Theme Supports (alignments, custom spacing, etc.)
+    - Integrating with the Full Site Editor
+    - Managing Navigation and Widgets in Block Context
+
+26. **Resources and Community Engagement**
+    - Staying Updated with Gutenberg and Block Development
+    - Participating in WordPress Community Discussions
+    - Useful Tools and Plugins for Block Development
