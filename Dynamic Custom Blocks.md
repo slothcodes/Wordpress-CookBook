@@ -26,49 +26,55 @@ Edit your block's `block.json` file to include a `render_callback` function. Thi
 ## Step 3: Creating the PHP Render Callback Function
 In your plugin's main PHP file, create the render callback function. This function will output the dynamic content of the block.
 ```
-function my_custom_block_render_callback( $attributes, $content ) {
-    // This function is called to render the content of your block on the server-side.
-    // $attributes contains the attributes of the block defined in block.json or set by the user.
-    // $content contains any content that is saved within the block. For dynamic blocks, this is often null.
+// Define a function named 'agent_render_callback'. This function is a callback for rendering a block.
+// It takes two parameters: $attributes (an array of attributes passed to the block) and $content (the content inside the block, if any).
+function agent_render_callback( $attributes, $content ) {
+    // Retrieve the 'selectedAgentId' attribute from the block's attributes and store it in $agent_id.
+    $agent_id = $attributes['selectedAgentId'];
 
-    // Example: Fetching data from a custom post type 'my_custom_post_type'
-    $args = array(
-        'post_type'      => 'my_custom_post_type', // Specify your custom post type
-        'posts_per_page' => 5, // Number of posts to retrieve
-    );
+    // Get the WP_Post object for the post with ID equal to $agent_id.
+    $agent = get_post( $agent_id );
 
-    $query = new WP_Query($args);
+    // Retrieve the 'agent_phone' meta field value for the post and store it in $agent_phone.
+    // 'true' indicates that it returns a single value (string) rather than an array of values.
+    $agent_phone = get_post_meta( $agent_id, 'agent_phone', true );
 
-    // Start an output buffer to capture the HTML content.
+    // Retrieve the 'agent_first_name' meta field value for the post and store it in $agent_first_name.
+    // Similar to above, 'true' indicates a single value is returned.
+    $agent_first_name = get_post_meta( $agent_id, 'agent_first_name', true );
+
+    // Start output buffering. This means that instead of directly outputting HTML, PHP will hold it in a buffer.
     ob_start();
 
-    // Check if the query has posts.
-    if ( $query->have_posts() ) {
-        // Start a loop to iterate through the posts.
-        while ( $query->have_posts() ) {
-            $query->the_post();
+    // Check if the $agent object is valid (i.e., if a post with the given ID was found).
+    if ( $agent ) {
+        // Start a div with the class 'agent-card'. This is likely for styling purposes.
+        echo '<div class="agent-card">';
 
-            // Here you can output the HTML for each post.
-            // For example, displaying the post title and excerpt.
-            echo '<div class="my-custom-block-post">';
-            echo '<h2>' . get_the_title() . '</h2>'; // Display the title of the post
-            echo '<p>' . get_the_excerpt() . '</p>';  // Display the excerpt of the post
-            echo '</div>';
-        }
+        // Start another div within 'agent-card' for agent information, with the class 'agent-info'.
+        echo '<div class="agent-info">';
 
-        // Reset post data to avoid conflicts with other queries.
-        wp_reset_postdata();
+        // Output the agent's first name within an <h3> element, ensuring HTML characters are escaped for security.
+        echo '<h3>Name: ' . esc_html($agent_first_name) . '</h3>';
+
+        // Output the agent's phone number within a <p> element, with HTML characters escaped.
+        echo '<p>Phone: ' . esc_html($agent_phone) . '</p>';
+
+        // Close the 'agent-info' div.
+        echo '</div>';
+
+        // Close the 'agent-card' div.
+        echo '</div>';
     } else {
-        // Output a message if no posts were found.
-        echo '<p>No posts found.</p>';
+        // If no agent is found, output a paragraph stating 'No Agents Found'.
+        echo '<p>No Agents Found</p>';
     }
 
-    // Get the content from the output buffer.
-    $output = ob_get_clean();
-
-    // Return the content to be displayed in the block.
-    return $output;
+    // End output buffering and return the HTML content that was buffered.
+    // This is the HTML that will be rendered by the block on the frontend.
+    return ob_get_clean();
 }
+
 ```
 - We're fetching the latest five posts of a custom post type named my_custom_post_type.
 - The content of each post (title and excerpt) is displayed in a simple HTML structure.
