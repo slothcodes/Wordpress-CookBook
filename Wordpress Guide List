@@ -1,0 +1,39 @@
+ 1. **Introduction to Gutenberg Full Site Editor**: Overview of the Gutenberg editor, its capabilities, and how it's integrated into WordPress.
+
+2. **Developing Custom Blocks**: A step-by-step guide on creating custom Gutenberg blocks from scratch, including coding standards and best practices.
+
+3. **Creating Custom Post Types**: Instructions on how to create and manage custom post types without using plugins, with examples.
+
+4. **Agency Coding Standards**: A guide outlining the coding standards and conventions your team follows, including naming conventions, formatting rules, and documentation guidelines.
+
+5. **Version Control Practices**: Detailed guide on using version control systems (like Git), including branch management, commit conventions, and merge requests.
+
+6. **WordPress Theme Development**: Best practices and standards for developing WordPress themes, particularly with Gutenberg compatibility in mind.
+
+7. **Responsive Design Techniques**: Guidelines and tips for creating responsive designs that work well with Gutenberg blocks.
+
+8. **Accessibility Standards**: How to ensure that your web designs and custom blocks are accessible, following WCAG guidelines.
+
+9. **Performance Optimization**: Techniques for optimizing website performance, including best practices for loading custom blocks and scripts.
+
+10. **Security Best Practices**: Essential security practices for developing in WordPress, focusing on custom block and post type security.
+
+11. **Workflow and Collaboration Tools**: Overview of the tools and platforms used for project management, collaboration, and communication within the team.
+
+12. **Debugging and Troubleshooting**: Common issues and troubleshooting techniques specific to Gutenberg and custom WordPress development.
+
+13. **Testing and Quality Assurance**: Processes for testing custom blocks, post types, and themes, including automated and manual testing strategies.
+
+14. **Project Lifecycle Management**: Guide to the project lifecycle in your agency, from initial planning to deployment and maintenance.
+
+15. **Client Communication and Management**: Best practices for communicating with clients, understanding their requirements, and managing expectations.
+
+16. **Update and Maintenance Processes**: Procedures for updating and maintaining WordPress sites, custom blocks, and themes.
+
+17. **Local Development Environment Setup**: How to set up a local development environment that mirrors your agency's standards.
+
+18. **Deployment Strategies**: Best practices and steps for deploying WordPress sites, especially those with custom blocks and post types.
+
+19. **Custom APIs and Integration**: Guidelines for integrating third-party APIs or creating custom APIs within WordPress.
+
+20. **Documentation Practices**: The importance of documentation, how to document code effectively, and maintain project documentation.
