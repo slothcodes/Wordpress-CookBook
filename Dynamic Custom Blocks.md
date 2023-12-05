@@ -76,7 +76,8 @@ function my_custom_block_render_callback( $attributes, $content ) {
 - This function can be further customized to display any dynamic content based on the block's attributes or other WordPress data.
 
 ## Step 4: Registering the Block with the Render Callback
-Ensure your block type is registered with the render callback function.
+Ensure your block type is registered with the render callback function. 
+### If The Block Is Not Registered Elsewhere
 ```
 function register_my_custom_block() {
     register_block_type( __DIR__ . '/build/my-custom-block', array(
@@ -84,6 +85,22 @@ function register_my_custom_block() {
     ));
 }
 add_action( 'init', 'register_my_custom_block' );
+```
+### If The Block Is Already Registered, Update With New Render Callback
+```
+function agent_register_block() {
+    // Check if the block is already registered
+    if ( ! WP_Block_Type_Registry::get_instance()->is_registered( 'real-estate-theme-tools/agent-block' ) ) {
+        return;
+    }
+
+    // Get the existing block type
+    $block_type = WP_Block_Type_Registry::get_instance()->get_registered( 'real-estate-theme-tools/agent-block' );
+
+    // Modify the block type to add the render callback
+    $block_type->render_callback = 'agent_render_callback';
+}
+add_action( 'init', 'agent_register_block', 20 ); // Ensure this runs after the initial block registration
 ```
 ## Step 5: Handling Block Attributes
 Define any necessary attributes in your block.json file. These attributes can be accessed within the render callback function to customize the block's output.
