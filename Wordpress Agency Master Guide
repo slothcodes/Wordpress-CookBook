@@ -1,168 +1,276 @@
-1. **Introduction to Gutenberg Full Site Editor**
-   - Overview of Gutenberg Editor
-   - Key Features and Capabilities
-   - Integrating Gutenberg with WordPress Themes
-   - User Interface Walkthrough
+# Comprehensive Guide for Running a WordPress Block Theme Development Agency
 
-2. **Developing Custom Blocks**
-   - Setting Up the Development Environment
-   - Understanding Block Structure and Attributes
-   - Building Basic Blocks
-   - Advanced Techniques: Dynamic Blocks and Inner Blocks
-   - Best Practices in Block Development
-   - Basics of Creating Custom Blocks with JavaScript
-   - Utilizing React and JSX in Block Development
-   - Managing Block Attributes and Dynamic Content
+## 1. Introduction to Gutenberg Full Site Editor
+- Overview of Gutenberg Editor
+- Key Features and Capabilities
+- Integrating Gutenberg with WordPress Themes
+- User Interface Walkthrough
 
-3. **Creating Custom Post Types**
-   - Basics of Custom Post Types
-   - Coding Custom Post Types: Step-by-Step
-   - Adding Meta Boxes and Custom Fields
-   - Displaying Custom Post Types in Themes
-   - Best Practices and Performance Considerations
-   - Registering Custom Post Types and Taxonomies
-   - Displaying Custom Content in Block Templates
-   - Querying Posts with Query Loop Block
+## 2. Developing Custom Blocks
+- Setting Up the Development Environment
+- Understanding Block Structure and Attributes
+- Building Basic Blocks
+- Advanced Techniques: Dynamic Blocks and Inner Blocks
+- Best Practices in Block Development
+- Basics of Creating Custom Blocks with JavaScript
+- Utilizing React and JSX in Block Development
+- Managing Block Attributes and Dynamic Content
 
-4. **Agency Coding Standards**
-   - General Coding Principles
-   - WordPress-Specific Coding Standards
-   - Code Formatting and Commenting Guidelines
-   - Peer Review and Code Collaboration Standards
+## 3. Creating Custom Post Types
+- Basics of Custom Post Types
+- Coding Custom Post Types: Step-by-Step
+- Adding Meta Boxes and Custom Fields
+- Displaying Custom Post Types in Themes
+- Best Practices and Performance Considerations
+- Registering Custom Post Types and Taxonomies
+- Displaying Custom Content in Block Templates
+- Querying Posts with Query Loop Block
 
-5. **Version Control Practices**
-   - Introduction to Version Control with Git
-   - Branching Strategies and Workflows
-   - Commit Messages and Standards
-   - Merge Requests and Code Reviews
+## 4. Agency Coding Standards
+- General Coding Principles
+- WordPress-Specific Coding Standards
+- Code Formatting and Commenting Guidelines
+- Peer Review and Code Collaboration Standards
 
-6. **WordPress Theme Development**
-   - Theme Structure and Hierarchy
-   - Developing Gutenberg-Compatible Themes
-   - Enqueuing Scripts and Styles
-   - Theme Customization Options
-   - Understanding Block Themes vs. Traditional Themes
-   - Key Components of a Block Theme (theme.json, block templates, block patterns)
+## 5. Version Control Practices
+- Introduction to Version Control with Git
+- Branching Strategies and Workflows
+- Commit Messages and Standards
+- Merge Requests and Code Reviews
 
-7. **Responsive Design Techniques**
-   - Principles of Responsive Design
-   - Media Queries and Breakpoints
-   - Responsive Images and Videos
-   - Testing and Debugging for Various Devices
+## 6. WordPress Theme Development
+- Theme Structure and Hierarchy
+- Developing Gutenberg-Compatible Themes
+- Enqueuing Scripts and Styles
+- Theme Customization Options
+- Understanding Block Themes vs. Traditional Themes
+- Key Components of a Block Theme (theme.json, block templates, block patterns)
 
-8. **Accessibility Standards**
-   - Understanding Web Accessibility
-   - WordPress and WCAG Compliance
-   - Accessible Design for Custom Blocks
-   - Tools for Testing Accessibility
-   - Ensuring Accessibility in Block Themes
-   - Internationalizing Blocks and Themes
-   - Best Practices for Accessible Content Creation
+## 7. Responsive Design Techniques
+- Principles of Responsive Design
+- Media Queries and Breakpoints
+- Responsive Images and Videos
+- Testing and Debugging for Various Devices
 
-9. **Performance Optimization**
-   - Analyzing Website Performance
-   - Optimizing Load Times for Blocks
-   - Caching Strategies
-   - Database Optimization
-   - Best Practices for Efficient Block Code
-   - Optimizing Block Loading and Rendering
-   - Implementing Lazy Loading and Asset Minification
+## 8. Accessibility Standards
+- Understanding Web Accessibility
+- WordPress and WCAG Compliance
+- Accessible Design for Custom Blocks
+- Tools for Testing Accessibility
+- Ensuring Accessibility in Block Themes
+- Internationalizing Blocks and Themes
+- Best Practices for Accessible Content Creation
 
-10. **Security Best Practices**
-    - WordPress Security Fundamentals
-    - Securing Custom Blocks and Post Types
-    - Preventing Common Security Vulnerabilities
-    - Regular Security Audits and Updates
+## 9. Performance Optimization
+- Analyzing Website Performance
+- Optimizing Load Times for Blocks
+- Caching Strategies
+- Database Optimization
+- Best Practices for Efficient Block Code
+- Optimizing Block Loading and Rendering
+- Implementing Lazy Loading and Asset Minification
 
-11. **Workflow and Collaboration Tools**
-    - Overview of Project Management Tools
-    - Effective Use of Communication Platforms
-    - Collaborative Coding Tools
-    - Time Management and Task Prioritization
+## 10. Security Best Practices
+- WordPress Security Fundamentals
+- Securing Custom Blocks and Post Types
+- Preventing Common Security Vulnerabilities
+- Regular Security Audits and Updates
 
-12. **Debugging and Troubleshooting**
-    - Common Gutenberg Development Issues
-    - Debugging Tools and Techniques
-    - Browser Console and Debugging Plugins
-    - Troubleshooting Performance Issues
-    - Tools and Techniques for Debugging Block Themes
-    - Testing Block Themes Across Different Devices
-    - Automated Testing for Custom Blocks
+## 11. Workflow and Collaboration Tools
+- Overview of Project Management Tools
+- Effective Use of Communication Platforms
+- Collaborative Coding Tools
+- Time Management and Task Prioritization
 
-13. **Testing and Quality Assurance**
-    - Unit Testing for WordPress
-    - Automated Testing Tools and Frameworks
-    - Manual Testing Best Practices
-    - Quality Assurance Checklists
+## 12. Debugging and Troubleshooting
+- Common Gutenberg Development Issues
+- Debugging Tools and Techniques
+- Browser Console and Debugging Plugins
+- Troubleshooting Performance Issues
+- Tools and Techniques for Debugging Block Themes
+- Testing Block Themes Across Different Devices
+- Automated Testing for Custom Blocks
 
-14. **Project Lifecycle Management**
-    - Project Planning and Requirements Gathering
-    - Development Phases
-    - Deployment and Launch
-    - Post-Launch Support and Maintenance
+## 13. Testing and Quality Assurance
+- Unit Testing for WordPress
+- Automated Testing Tools and Frameworks
+- Manual Testing Best Practices
+- Quality Assurance Checklists
 
-15. **Client Communication and Management**
-    - Building Client Relationships
-    - Gathering and Documenting Client Requirements
-    - Managing Client Expectations
-    - Effective Communication Strategies
+## 14. Project Lifecycle Management
+- Project Planning and Requirements Gathering
+- Development Phases
+- Deployment and Launch
+- Post-Launch Support and Maintenance
 
-16. **Update and Maintenance Processes**
-    - WordPress Core, Theme, and Plugin Updates
-    - Regular Maintenance Tasks
-    - Backup Strategies
-    - Handling Downtime and Emergencies
+## 15. Client Communication and Management
+- Building Client Relationships
+- Gathering and Documenting Client Requirements
+- Managing Client Expectations
+- Effective Communication Strategies
 
-17. **Local Development Environment Setup**
-    - Choosing a Local Development Environment
-    - Configuring Local Servers
-    - Synchronizing Local and Production Environments
-    - Collaborating in a Local Environment
+## 16. Update and Maintenance Processes
+- WordPress Core, Theme, and Plugin Updates
+- Regular Maintenance Tasks
+- Backup Strategies
+- Handling Downtime and Emergencies
 
-18. **Deployment Strategies**
-    - Deployment Best Practices
-    - Continuous Integration and Continuous Deployment (CI/CD)
-    - Rollback Strategies
-    - Post-Deployment Testing
+## 17. Local Development Environment Setup
+- Choosing a Local Development Environment
+- Configuring Local Servers
+- Synchronizing Local and Production Environments
+- Collaborating in a Local Environment
 
-19. **Custom APIs and Integration**
-    - Integrating Third-Party APIs
-    - Creating Custom RESTful APIs in WordPress
-    - Handling API Authentication and Security
-    - Best Practices for API Performance
+## 18. Deployment Strategies
+- Deployment Best Practices
+- Continuous Integration and Continuous Deployment (CI/CD)
+- Rollback Strategies
+- Post-Deployment Testing
 
-20. **Documentation Practices**
-    - Importance and Benefits of Good Documentation
-    - Documenting Code and Architectural Decisions
-    - Project Documentation Standards
-    - Tools and Platforms for Documentation
+## 19. Custom APIs and Integration
+- Integrating Third-Party APIs
+- Creating Custom RESTful APIs in WordPress
+- Handling API Authentication and Security
+- Best Practices for API Performance
 
-21. **Working with theme.json**
-    - Structure and Configuration of theme.json
-    - Setting Global Styles and Theme Settings
-    - Configuring Color Palettes, Typography, and Layout
+## 20. Documentation Practices
+- Importance and Benefits of Good Documentation
+- Documenting Code and Architectural Decisions
+- Project Documentation Standards
+- Tools and Platforms for Documentation
 
-22. **Block Templates and Template Parts**
-    - Creating and Modifying Block Templates
-    - Understanding and Using Template Parts
-    - Managing Templates in the Site Editor
+## 21. Working with theme.json
+- Structure and Configuration of theme.json
+- Setting Global Styles and Theme Settings
+- Configuring Color Palettes, Typography, and Layout
 
-23. **Creating and Managing Block Patterns**
-    - Designing Custom Block Patterns
-    - Registering and Using Block Patterns
-    - Sharing Patterns Across Projects
+## 22. Block Templates and Template Parts
+- Creating and Modifying Block Templates
+- Understanding and Using Template Parts
+- Managing Templates in the Site Editor
 
-24. **Advanced Block Features**
-    - Implementing Inner Blocks
-    - Handling Block Variations and Styles
-    - Integrating with WordPress APIs (Rest API, etc.)
+## 23. Creating and Managing Block Patterns
+- Designing Custom Block Patterns
+- Registering and Using Block Patterns
+- Sharing Patterns Across Projects
 
-25. **Theme Settings and Customization**
-    - Adding Theme Supports (alignments, custom spacing, etc.)
-    - Integrating with the Full Site Editor
-    - Managing Navigation and Widgets in Block Context
+## 24. Advanced Block Features
+- Implementing Inner Blocks
+- Handling Block Variations and Styles
+- Integrating with WordPress APIs (Rest API, etc.)
 
-26. **Resources and Community Engagement**
-    - Staying Updated with Gutenberg and Block Development
-    - Participating in WordPress Community Discussions
-    - Useful Tools and Plugins for Block Development
+## 25. Theme Settings and Customization
+- Adding Theme Supports (alignments, custom spacing, etc.)
+- Integrating with the Full Site Editor
+- Managing Navigation and Widgets in Block Context
+
+## 26. Resources and Community Engagement
+- Staying Updated with Gutenberg and Block Development
+- Participating in WordPress Community Discussions
+- Useful Tools and Plugins for Block Development
+
+## Additional Information
+
+### Document Resources
+- Panda Doc
+- Docusign
+- Proposable
+  - These services integrate with Stripe and PayPal to reduce the risk of chargebacks.
+
+### Preparing a Questionnaire for New Clients
+- Construct questions to help guide clients.
+
+### Client Notifications
+- Notify clients that the site uses WordPress and requires regular updates.
+
+### Elementor Tools
+- Offers contract and proposal templates.
+
+### Pricing Methods
+- Fixed Rates
+  - Basic Site: $499 (3-5 pages, gallery, contact form, basic SEO)
+  - Premium: $1499 (5-10 pages, premium gallery design, and a blog)
+  - Premium Plus: $2499 (15 pages with more functionality: booking integrations, eCommerce, or real estate)
+  - Custom: $5000+ (Multivendor, hotel booking, classified ads website)
+- Hourly Rates
+  - Pros: Better security for the web designer, more experience leads to better understanding of costs and accurate proposals, more practical.
+  - Cons: Creates tension (clients can't see work progress), uncertainty in pricing.
+
+### Recurring Revenue Streams
+- Web Hosting ($25-$50)
+- Website Maintenance ($50-$150)
+- SEO Packages ($200-$400)
+- Content Writing ($300-$500)
+- Social Media Marketing ($250-$500)
+- Graphic Work
+
+### Maintenance Options
+- Managewp.com: Easily manage a large number of websites.
+
+### How To Talk To Customers
+- Learn to be a salesman.
+- Agree and accommodate clients.
+- Take nothing personally.
+- Put yourself in the client's shoes.
+
+### SEO Strategies
+- For You: Target both non-competitive and competitive keywords, outreach, guest blogging, content marketing focusing on topics that business owners are looking for.
+- For Clients: Charge $200-$400 a month, provide reports, outsourcing is common.
+
+### Irate Customers
+- Avoid customers in a rush or those who are overly aggressive.
+- Use email for communication in tense situations.
+- Acknowledge mistakes and fix them.
+- Encourage word-of-mouth referrals.
+
+### Billing Clients
+- Use PayPal and Stripe for billing.
+- No credit check and low fees.
+- Create invoices or subscriptions through Proposable and Pandadoc.
+
+### Web Design Workflow Overview
+- Get email/job.
+- Respond to user.
+- Send questionnaire.
+- Review and send proposal/contract.
+- Start work.
+- Establish hosting.
+- Design website: initial design, color palettes, fonts, tone, and goal.
+
+### Avoiding Scams
+- Prefer non-disputable payment methods like bank transfers.
+- Use digital contracts with credit card payments.
+- Be wary of overpayments and unusual language or requirements.
+- Avoid checks and insist on contracts with credit card payments.
+
+### Managed Hosting Options
+- You host the site on your server or let them host the website.
+- Considerations for support, ease of walking away, and handling hosting problems.
+- Charge more upfront to avoid getting scammed.
+
+### Migrating Websites
+- Use plugins like wp-migration for easy migration.
+
+### Terms To Remember
+- Wireframe, Mock-Up, Prototype, UX, UI.
+
+### Workflow And Handoff
+- Create initial design, show progress, and finalize website.
+- Use tools like Projecthuddle for revisions.
+
+### Website Handoff
+- Limit access based on maintenance plans.
+- Provide support information for plugins used.
+- Use explainer videos and backups for safety.
+
+### Design Tips
+- Fonts: 1 to 2 max, reflecting business professionalism.
+- Colors: Influence purchasing, brand recognition, and customer attraction.
+- Website Purpose: Choose colors based on the goal.
+- Consistent Design: Maintain uniformity across the website.
+- The Importance Of Padding: Adds structure and attention to messages.
+- Landing Page Strategies: Strong call to action, limited choices, social proof, clear branding.
+- Animations: Use sparingly and consistently.
+
+### Marketing Strategies
+- SEO, content marketing, social networking profiles, directory listings, answering questions on platforms like Quora, showcasing work on Behance and Dribbble, using Google Images, classified ads, and Facebook Ads.
