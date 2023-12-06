@@ -157,21 +157,170 @@ React is used under the hood in Gutenberg. Familiarize yourself with its basic c
 ### Data Fetching and Updating
 - Fetch data from APIs and update block content dynamically.
 
-## 3. Creating Custom Post Types
-- Basics of Custom Post Types
-- Coding Custom Post Types: Step-by-Step
-- Adding Meta Boxes and Custom Fields
-- Displaying Custom Post Types in Themes
-- Best Practices and Performance Considerations
-- Registering Custom Post Types and Taxonomies
-- Displaying Custom Content in Block Templates
-- Querying Posts with Query Loop Block
+# 3. Creating Custom Post Types
 
-## 4. Agency Coding Standards
-- General Coding Principles
-- WordPress-Specific Coding Standards
-- Code Formatting and Commenting Guidelines
-- Peer Review and Code Collaboration Standards
+This section focuses on creating custom post types in WordPress, which are essential for agencies specializing in custom block themes. It provides a step-by-step guide, best practices, and performance considerations.
+
+## 3.1 Basics of Custom Post Types
+
+### Definition and Importance
+- Custom Post Types (CPTs) are content types like posts and pages, but they allow for more customization.
+- They are crucial for managing and displaying different types of content in WordPress, beyond standard posts and pages.
+
+### Use Cases
+- CPTs are used for diverse content like products in an eCommerce site, portfolio items, testimonials, or events.
+
+## 3.2 Coding Custom Post Types: Step-by-Step
+
+### Registering Custom Post Types
+- Use `register_post_type()` function in your theme’s `functions.php` or a custom plugin.
+- Example:
+  ```php
+  function create_custom_post_type() {
+      register_post_type('custom_type',
+          array(
+              'labels' => array(
+                  'name' => __('Custom Types'),
+                  'singular_name' => __('Custom Type')
+              ),
+              'public' => true,
+              'has_archive' => true,
+              'show_in_rest' => true,
+          )
+      );
+  }
+  add_action('init', 'create_custom_post_type');
+  ```
+### Setting Up Labels and Descriptions
+- Define clear, descriptive labels for the CPT for easy identification in the WordPress dashboard.
+### Configuring Options
+- Set options like public, has_archive, and show_in_rest for REST API support.
+
+## 3.3 Adding Meta Boxes and Custom Fields
+### Creating Meta Boxes
+- Add meta boxes to provide a UI for adding custom fields.
+- Use add_meta_box() function during the add_meta_boxes hook.
+### Defining Custom Fields
+- Create fields for additional data like dates, text, or images.
+Example:
+```
+function add_custom_meta_box() {
+    add_meta_box('custom_meta', 'Custom Field', 'custom_meta_callback', 'custom_type');
+}
+add_action('add_meta_boxes', 'add_custom_meta_box');
+```
+### Saving and Retrieving Data
+- Save data using the save_post hook.
+- Retrieve data using get_post_meta() function.
+
+## 3.4 Displaying Custom Post Types in Themes
+### Theme Template Files
+- Create or modify template files like single-custom_type.php for displaying CPTs.
+### Custom Queries
+- Use WP_Query to create custom queries for your CPTs.
+Example:
+```
+$args = array(
+    'post_type' => 'custom_type',
+    'posts_per_page' => 10
+);
+$the_query = new WP_Query($args);
+```
+### Integrating with Block Themes
+- Ensure CPTs are displayed correctly in block themes, considering block patterns and template parts.
+
+## 3.5 Best Practices and Performance Considerations
+### Coding Standards
+- Adhere to WordPress coding standards for maintainability and consistency.
+### Performance Optimization
+- Optimize queries and minimize database calls for faster loading.
+### Security Best Practices
+- Sanitize and validate data on save and escape output when displaying.
+## 3.6 Registering Custom Post Types and Taxonomies
+### Custom Taxonomies
+- Create taxonomies for categorizing CPTs using register_taxonomy().
+- Hierarchical vs Non-Hierarchical
+- Understand the differences: hierarchical (like categories) and non-hierarchical (like tags).
+### Rewrite Rules
+- Set custom URL structures for better SEO and user-friendly permalinks.
+## 3.7 Displaying Custom Content in Block Templates
+### Block-Based Templates
+- Use full site editing capabilities to integrate CPTs within block templates.
+### Dynamic Data Rendering
+- Display dynamic content in block templates using custom queries and PHP blocks.
+### Template Parts and Reusability
+- Create reusable template parts for efficient and consistent design across different CPTs.
+## 3.8 Querying Posts with Query Loop Block
+### Using Query Loop Block
+- Utilize the Query Loop block in the full site editor to display CPTs dynamically.
+### Custom Queries and Filters
+- Customize queries within the Query Loop block using block settings and additional PHP filters.
+### Styling and Layout Considerations
+- Style the output of the Query Loop block to match the overall design of the theme.
+
+# 4. Agency Coding Standards
+
+This section outlines the coding standards and best practices that our agency adheres to, ensuring high-quality, maintainable, and collaborative WordPress development.
+
+## 4.1 General Coding Principles
+
+### Readability and Maintainability
+- Code should be self-explanatory. Example: Use `$user_count` instead of `$uc` for clarity.
+- Implement a consistent coding style, like always placing opening braces on the same line as the function declaration.
+
+### DRY (Don't Repeat Yourself) Principle
+- Reuse code with functions. Example: Create a `get_formatted_date()` function used across multiple templates instead of repeating date formatting logic.
+- Utilize WordPress hooks to modify core functionality without altering core files.
+
+### KISS (Keep It Simple, Stupid) Principle
+- Opt for simpler solutions. Example: Use WordPress built-in functions like `wp_enqueue_script()` instead of manually echoing script tags.
+
+### Modular Development
+- Break code into smaller, reusable modules. Example: Develop a separate module for handling custom post type registration.
+
+## 4.2 WordPress-Specific Coding Standards
+
+### Following WordPress Core Standards
+- Adhere to standards for [indentation](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/#indentation) (use tabs), [naming files](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/#naming-conventions), etc.
+
+### Naming Conventions
+- Prefix functions to avoid conflicts. Example: `mytheme_custom_header()` instead of `custom_header()`.
+
+### WordPress Security Practices
+- Sanitize inputs using WordPress functions like `sanitize_text_field()`.
+- Escape outputs with functions like `esc_html()` or `esc_attr()`.
+
+### File and Folder Structure
+- Organize theme files according to the [WordPress template hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/).
+
+## 4.3 Code Formatting and Commenting Guidelines
+
+### Code Formatting Rules
+- Use [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) with WordPress rulesets for consistent formatting.
+- Example: Format PHP code with proper spacing around operators.
+
+### Commenting Best Practices
+- Document complex sections. Example:
+ ```
+  // Calculate and return the discounted price
+  function calculate_discounted_price($price, $discount) {
+      return $price - ($price * ($discount / 100));
+  }
+```
+- Use PHPDoc for documenting functions. Example:
+```
+/**
+ * Retrieves formatted date.
+ *
+ * @param string $date Date string.
+ * @return string Formatted date.
+ */
+function get_formatted_date($date) {
+    // Function body...
+}
+```
+### Documentation Standards
+- Inline comments for tricky parts. Example: Explain why a certain workaround is used in a specific plugin or theme.
 
 ## 5. Version Control Practices
 - Introduction to Version Control with Git
@@ -310,7 +459,7 @@ React is used under the hood in Gutenberg. Familiarize yourself with its basic c
 - Participating in WordPress Community Discussions
 - Useful Tools and Plugins for Block Development
 
-## Additional Information
+## Business Information And Strategy
 
 ### Document Resources
 - Panda Doc
