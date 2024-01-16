@@ -1,0 +1,34 @@
+Optimnize Elementor Website Steps
+
+- Install WP Fastest Cache
+	- Enable Cache
+	- Enable Preload
+		- Homepage
+		- Posts
+		- Pages
+	- Logged-In Users - Dont Showo Cached Version
+	- Mobile Dont show cached version for desktop to mobile devices
+	- New Post Clear cache files when a post or page is published
+		- all
+	- update post clear cache files when a post or page is updated
+	- Minify HTML 
+	- GZIP
+	- browser cache
+	- disable emojis
+- Install Autoptimize
+	- Optimize javascript code
+		- aggregate js-files
+		- also aggregate inline js
+	- Optimize CSS code
+		- aggregate css files
+		- also aggregate inline css
+		- inline all css
+	- Enable Optimize HTML Code
+	
+- ELIMNATE RENDER BLOCKING RESOURCES
+	- Autoptimize
+		- Find exclude css from autoptimize
+			- remove "wp-content/uploads"
+		- Extra menu
+			- Google Fonts
+				- Combine and link deferred in head
